@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Ryo Shen">
+  <meta name="keywords" content="">
+  <title>灯半昏月半明</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.13.0/css/mdb.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css" />
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link  rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css" />
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link defer rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+<!-- 自定义样式保持在最底部 -->
+
+
+<meta name="generator" content="Hexo 5.1.1"><link rel="alternate" href="/atom.xml" title="灯半昏月半明" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>灯半昏月半明</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/index.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-md">
+        <div class="py-5 z-depth-3" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2021/09/design-pattern-singleton/" target="_self">
+          <img src="/images/design_pattern.jpeg" srcset="/img/loading.gif" alt="设计模式（1）——单例模式"
+               class="index-img img-fluid rounded index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 mx-auto index-info">
+      <a href="/2021/09/design-pattern-singleton/">
+        <p class="h4 index-header">设计模式（1）——单例模式</p>
+      </a>
+
+      <a href="/2021/09/design-pattern-singleton/">
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">单例模式(Singleton Pattern)保证一个类仅有一个实例，并提供一个访问它的全局访问点。
+饿汉式饿汉式基于 classloader 机制避免了多线程的同步问题，会在第一次调用时就直接初始化，线程安全，但是可能会浪费空间。
+可以在使用的时候再创建对象，于是出现了懒汉式。
+public class SingletonGreed &#123;
+
+    public SingletonGreed() &#123;
+    &#125;
+
+    private final static SingletonGreed SINGLETON = new SingletonGreed();
+
+ </div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2021-09-20&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/design-pattern/">design pattern</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/design-pattern/">design pattern</a>&nbsp;
+          
+            <a href="/tags/java/">java</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2021/08/open-source-mirror-sites/" target="_self">
+          <img src="/images/open-source.png" srcset="/img/loading.gif" alt="开源镜像站点汇总"
+               class="index-img img-fluid rounded index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 mx-auto index-info">
+      <a href="/2021/08/open-source-mirror-sites/">
+        <p class="h4 index-header">开源镜像站点汇总</p>
+      </a>
+
+      <a href="/2021/08/open-source-mirror-sites/">
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">PyPi 镜像临时使用pip install -i [url] [some-package]
+设为默认pip config set global.index-url [url]
+国内镜像地址清华大学：https://pypi.tuna.tsinghua.edu.cn/simple
+阿里：https://mirrors.aliyun.com/pypi/simple/
+豆瓣：https://pypi.doubanio.com/simple/
+北京外国语大学：https://mirrors.bfsu.edu.cn/pypi/web/simple/
+JDK 镜像下载镜像嗖嗖下载java jdk镜像：h</div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2021-08-28&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/">学习资料</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6/">开源软件</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2020/09/submit-to-github-with-gpg-on-mac/" target="_self">
+          <img src="/images/gpg.png" srcset="/img/loading.gif" alt="在macOS上使用GPG对GitHub进行签名"
+               class="index-img img-fluid rounded index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 mx-auto index-info">
+      <a href="/2020/09/submit-to-github-with-gpg-on-mac/">
+        <p class="h4 index-header">在macOS上使用GPG对GitHub进行签名</p>
+      </a>
+
+      <a href="/2020/09/submit-to-github-with-gpg-on-mac/">
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">在GitHub上面我们对自己提交的commit进行签名，通过签名之后GitHub就会知道这个commit是经过签名的、可信的commit，并且会有个绿色的“Verified”显示在旁边。
+安装PGP这里通过homebrew进行安装，没有的话可以通过官网https://brew.sh/ 先安装homebrew。
+brew install gpg
+安装完成后可以通过gpg --version查看当前安装的GPG版本号。
+生成GPG秘钥GPG版本为2.1.17或者更高gpg --full-generate-key
+GPG版本低于2.1.17gpg --default-new-key-algo rsa</div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-09-09&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/macOS/">macOS</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/github/">github</a>&nbsp;
+          
+            <a href="/tags/gpg/">gpg</a>&nbsp;
+          
+            <a href="/tags/macOS/">macOS</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2020/05/leetcode-sliding-window/" target="_self">
+          <img src="/images/algorithm.png" srcset="/img/loading.gif" alt="[算法] leetcode 题型之 滑动窗口"
+               class="index-img img-fluid rounded index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 mx-auto index-info">
+      <a href="/2020/05/leetcode-sliding-window/">
+        <p class="h4 index-header">[算法] leetcode 题型之 滑动窗口</p>
+      </a>
+
+      <a href="/2020/05/leetcode-sliding-window/">
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">理论滑动窗口是双指针的其中一种用法，在 leetcode 上面也是不时能看到它的身影。滑动窗口的双指针分别代表的是窗口的左边界和右边界，而我们需要做的，就是在每次循环时，右边界向右移，同时，去判断窗口内的数据是否依旧满足题解，如果不满足，则需要将左边界也向右移。因此，滑动指针的题目可以用类似以下的模板进行改动：
+void slidingWindow(string s) &#123;
+    int left = 0, right = 0;
+
+    while (right &lt; s.size()) &#123;
+        // c 是窗口中新移入的字符
+        char c</div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-30&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/leetcode/">leetcode</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/algorithm/">algorithm</a>&nbsp;
+          
+            <a href="/tags/leetcode/">leetcode</a>&nbsp;
+          
+            <a href="/tags/sliding-window/">sliding window</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2020/04/github-action-for-hexo/" target="_self">
+          <img src="/images/action.png" srcset="/img/loading.gif" alt="使用 GitHub Action 自动部署 Hexo"
+               class="index-img img-fluid rounded index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 mx-auto index-info">
+      <a href="/2020/04/github-action-for-hexo/">
+        <p class="h4 index-header">使用 GitHub Action 自动部署 Hexo</p>
+      </a>
+
+      <a href="/2020/04/github-action-for-hexo/">
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Github Actions 是Github官方推出的 CI/CD 工具，通过它，可以在每次提交代码时，自动编译并部署到 Github Pages。这样就不用每次写好博客时，手工部署到服务器上。Github Actions 针对公开仓库永久免费。当然，像博客这样的数据我们一般都是放在私有仓库里的，Github Actions 同样提供每月至少 2000 分钟的运行时长，这个时间对于博客的自动部署是足够了。
+生成Github Personal access token在 Settings -&gt; Developer settings -&gt; Personal access tokens </div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-12&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/hexo/">hexo</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/hexo/">hexo</a>&nbsp;
+          
+            <a href="/tags/github-action/">github action</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2017/08/using-hexo-building-blog-on-mac/" target="_self">
+          <img src="/img/page.jpg" srcset="/img/loading.gif" alt="在Mac下通过HEXO在Github上搭建博客"
+               class="index-img img-fluid rounded index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 mx-auto index-info">
+      <a href="/2017/08/using-hexo-building-blog-on-mac/">
+        <p class="h4 index-header">在Mac下通过HEXO在Github上搭建博客</p>
+      </a>
+
+      <a href="/2017/08/using-hexo-building-blog-on-mac/">
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">经过一番折腾，总算是把Hexo给弄好了。在这期间遇到了各种问题，网上有的教程也有点老了，这里就再写一篇。最新的教程可以去Hexo官网查看。
+前期准备安装XcodeHexo的编译可能依赖Xcode。这个直接从App Store上下载就好了，没什么难度。
+安装node.jsHexo是基于node.js的，所以要去官网上下载下来安装。版本可以选择稳定版(6.11.2)(4.3.1)也可以选择最新版(8.4.0)(5.7.0)。需要注意的是，Hexo 3.1.1测试的最低版本为0.12，所以安装的版本不要太旧，之前看到网上装的0.8.4的版本，我也这么装，结果有一大堆的报错。
+
+注册Github账户在</div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2017-08-20&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/hexo/">hexo</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/macOS/">macOS</a>&nbsp;
+          
+            <a href="/tags/Hexo/">Hexo</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2017/04/backup-date-by-google-drive/" target="_self">
+          <img src="/img/page.jpg" srcset="/img/loading.gif" alt="使用 Google Drive 备份你的数据"
+               class="index-img img-fluid rounded index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 mx-auto index-info">
+      <a href="/2017/04/backup-date-by-google-drive/">
+        <p class="h4 index-header">使用 Google Drive 备份你的数据</p>
+      </a>
+
+      <a href="/2017/04/backup-date-by-google-drive/">
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">有时候你的 VPS 上运行着一些博客等数据，通常我们为了防止数据突然丢失等意外，都会将数据进行备份，下面我就来说说如何使用 Google Drive 来进行数据备份。在本篇文章中，上传到 Google Drive 的都是已经打包过的压缩包，而不是一些源文件，同时你的 VPS 也需要能够连接到 Google 的服务器。
+下载 gdrive在这里我们使用 gdrive 来连接 Google Drive ，并通过它来上传文件。gdrive 是一个比较常用的工具，使用 Go 语言编写，这里是它的 GitHub 地址。
+macOS 安装macOS 系统可以使用 brew 来安装，如果机器上没有安装 br</div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2017-04-10&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/backup/">backup</a>&nbsp;
+          
+            <a href="/tags/Google-Drive/">Google Drive</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2016/11/half-adder-and-full-adder/" target="_self">
+          <img src="/img/page.jpg" srcset="/img/loading.gif" alt="半加器与全加器"
+               class="index-img img-fluid rounded index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 mx-auto index-info">
+      <a href="/2016/11/half-adder-and-full-adder/">
+        <p class="h4 index-header">半加器与全加器</p>
+      </a>
+
+      <a href="/2016/11/half-adder-and-full-adder/">
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">半加器：
+半加器电路是指对两个输入数据位相加，输出一个结果位和进位，没有进位输入的加法器电路。 是实现两个一位二进制数的加法运算电路。
+逻辑图：
+
+
+真值表：
+
+ 全加器：
+全加器英语名称为full-adder，是用门电路实现两个二进制数相加并求出和的组合线路，称为一位全加器。一位全加器可以处理低位进位，并输出本位加法进位。多个一位全加器进行级联可以得到多位全加器。
+逻辑图：
+
+真值表：
+
+</div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2016-11-23&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2016/08/hello-world/" target="_self">
+          <img src="/img/page.jpg" srcset="/img/loading.gif" alt="世界，你好！"
+               class="index-img img-fluid rounded index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 mx-auto index-info">
+      <a href="/2016/08/hello-world/">
+        <p class="h4 index-header">世界，你好！</p>
+      </a>
+
+      <a href="/2016/08/hello-world/">
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1"> 
+
+用 WordPress 搭好了博客，之前的数据库被我搞坏了，又没有备份，所以就新开了一个。
+</div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2016-08-29&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E5%8D%9A%E5%AE%A2%E8%BF%90%E7%BB%B4/">博客运维</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2016/08/c-decimal-precision/" target="_self">
+          <img src="/img/page.jpg" srcset="/img/loading.gif" alt="C++ 输出时保留的小数位数"
+               class="index-img img-fluid rounded index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 mx-auto index-info">
+      <a href="/2016/08/c-decimal-precision/">
+        <p class="h4 index-header">C++ 输出时保留的小数位数</p>
+      </a>
+
+      <a href="/2016/08/c-decimal-precision/">
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">cout语句中有一个专门用来控制小数位数的函数(setprecison)，可以方便地输出不同的小数位数。
+这个函数需要包含头文件#include &lt;iomanip&gt;
+我们来看看用法：
+
+cout &lt;&lt; setprecision(输出位数) &lt;&lt; 变量/数字 &lt;&lt; endl;
+
+例如：
+cout &lt;&lt; setprecision(2) &lt;&lt; 3.123 &lt;&lt; endl;
+我们得到的结果就是「3.12」。
+但需要注意下一个例子：
+cout &lt;&lt; setprecision(4) &lt;&lt; 3.123</div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2016-08-29&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/C/">C++</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <nav aria-label="index posts navigation">
+    <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-double-right"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
+      ele.href += '#board';
+    }
+  </script>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    </div>
+    
+  <div>
+    
+      <!-- 不蒜子统计PV -->
+      
+      <span id="busuanzi_container_site_pv" style="display: none">
+      总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    </span>
+    
+    
+      <!-- 不蒜子统计UV -->
+      
+      <span id="busuanzi_container_site_uv" style="display: none">
+      总访客数 <span id="busuanzi_value_site_uv"></span> 人
+    </span>
+    
+  </div>
+
+
+    
+  <!-- 备案信息 -->
+  <div>
+    <a href="http://beian.miit.gov.cn/" target="_blank"
+       rel="nofollow noopener">沪ICP备15006615号</a>
+    
+
+
+    
+    <div>
+      Powered by 
+      <a href="https://webify.cloudbase.net/" target="_blank" rel="nofollow noopener"><b>CloudBase Webify</b></a>
+    </div>
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/popper.js/1.16.1/umd/popper.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js" ></script>
+<script  src="/js/main.js" ></script>
+
+
+  <script  src="/js/lazyload.js" ></script>
+
+
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://cdn.staticfile.org/smoothscroll/1.4.10/SmoothScroll.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+  
+<script src="/js/custom.js"></script>
+
+
+
+<!-- Plugins -->
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?f149318b2bf2428006445828774d8e97";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-72653245-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/prettify/188.0.0/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  ');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "Programming The World...&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script defer src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+  
+  
+    <script type="text/javascript">
+      //定义获取词语下标
+      var a_idx = 0;
+      jQuery(document).ready(function ($) {
+        //点击body时触发事件
+        $("body").click(function (e) {
+          //需要显示的词语
+          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
+          //设置词语给span标签
+          var $i = $("<span/>").text(a[a_idx]);
+          //下标等于原来下标+1  余 词语总数
+          a_idx = (a_idx + 1) % a.length;
+          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
+          //获取x和y的指针坐标
+          var x = e.pageX, y = e.pageY;
+          //在鼠标的指针的位置给$i定义的span标签添加css样式
+          $i.css({
+            "z-index": 999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": rand_color()
+          });
+          // 随机颜色
+          function rand_color() {
+            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+          }
+          //在body添加这个标签
+          $("body").append($i);
+          //animate() 方法执行 CSS 属性集的自定义动画。
+          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
+          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
+          $i.animate({
+            //将原来的位置向上移动180
+            "top": y - 180,
+            "opacity": 0
+            //1500动画的速度
+          }, 1500, function () {
+            //时间到了自动删除
+            $i.remove();
+          });
+        });
+      })
+      ;
+    </script>
+  
+
+
+
+
+
+
+
+
+</body>
+</html>

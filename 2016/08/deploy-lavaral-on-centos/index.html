@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Ryo Shen">
+  <meta name="keywords" content="">
+  <title>从 0 开始在 VPS 上部署 Laravel (CentOS 7.2) - 灯半昏月半明</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.13.0/css/mdb.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css" />
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link  rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css" />
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link defer rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+<!-- 自定义样式保持在最底部 -->
+
+
+<meta name="generator" content="Hexo 5.1.1"><link rel="alternate" href="/atom.xml" title="灯半昏月半明" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>灯半昏月半明</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/post.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+                <p class="mt-3 post-meta">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                  星期六, 八月 13日 2016, 8:11 晚上
+                </p>
+              
+
+              <p class="mt-1">
+                
+                  
+                  <span class="post-meta">
+                    <i class="far fa-chart-bar"></i>
+                    888 字
+                  </span>
+                
+
+                
+                  
+                  <span class="post-meta">
+                      <i class="far fa-clock"></i>
+                      4 分钟
+                  </span>
+                
+
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5 z-depth-3" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <div class="markdown-body">
+              <h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a><a href="#准备工作" title="准备工作"></a>准备工作</h2><p>之前写了一个 Ubuntu 系统的搭建教程，这次以 CentOS 7.2 为例，来说说怎么部署一个最简单的 Laravel 应用。我这里都是以 root 权限运行，如果不是 root 用户，请在命令前加上<code>sudo</code>。<br>先运行<code>yum update -y</code></p>
+<h2 id="安装-lnmp-一键安装包"><a href="#安装-lnmp-一键安装包" class="headerlink" title="安装 lnmp 一键安装包"></a><a href="#安装-lnmp-一键安装包" title="安装 lnmp 一键安装包"></a>安装 lnmp 一键安装包</h2><p>前期使用一键安装包可以有效防止莫名其妙出现的错误，简化安装步骤，这个安装过程预计需要1个小时左右的安装时间。<br>注意事项：<br>需要<strong>3GB</strong>以上硬盘剩余空间<br>需要<strong>128MB以上</strong>内存(如果为128MB的小内存VPS,Xen的需要有SWAP,OpenVZ的至少要有128MB以上的vSWAP或突发内存)，注意小内存请勿使用64位系统！<br>安装MySQL 5.6或5.7及MariaDB 10必须<strong>1G以上内存</strong>!</p>
+<p><a id="more"></a></p>
+<p>首先安装 screen：<code>yum install -y screen</code><br>然后运行<code>screen -S lnmp</code><br>如果网路出现中断，可以执行命令 <code>screen -r lnmp</code> 重新连接安装窗口<br>然后是安装 lnmp:<code>wget -c http://soft.vpser.net/lnmp/lnmp1.3-full.tar.gz &amp;amp;&amp;amp; tar zxf lnmp1.3-full.tar.gz &amp;amp;&amp;amp; cd lnmp1.3-full &amp;amp;&amp;amp; ./install.sh lnmp</code><br>安装过程中需要输入 MySQL 的 root 密码，后面设置可以自己设置，或者参考我下面的设置。</p>
+<pre><code>+------------------------------------------------------------------------+
+|          LNMP V1.3 for CentOS Linux Server, Written by Licess          |
++------------------------------------------------------------------------+
+|        A tool to auto-compile &amp; install LNMP/LNMPA/LAMP on Linux       |
++------------------------------------------------------------------------+
+|          For more information please visit http://www.lnmp.org         |
++------------------------------------------------------------------------+
+Please setup root password of MySQL.(Default password: root)
+Please enter: root
+MySQL root password: root
+===========================
+Do you want to enable or disable the InnoDB Storage Engine?
+Default enable,Enter your choice [Y/n]: Y
+You will disable the InnoDB Storage Engine!
+===========================
+You have 5 options for your DataBase install.
+1: Install MySQL 5.1.73
+2: Install MySQL 5.5.48 (Default)
+3: Install MySQL 5.6.29
+4: Install MariaDB 5.5.48
+5: Install MariaDB 10.0.23
+6: Install MySQL 5.7.11
+Enter your choice (1, 2, 3, 4, 5 or 6): 2
+You will install MySQL 5.5.48
+===========================
+You have 6 options for your PHP install.
+1: Install PHP 5.2.17
+2: Install PHP 5.3.29
+3: Install PHP 5.4.45 (Default)
+4: Install PHP 5.5.36
+5: Install PHP 5.6.22
+6: Install PHP 7.0.7
+Enter your choice (1, 2, 3, 4, 5 or 6): 6
+You will install PHP 7.0.7
+===========================
+You have 3 options for your Memory Allocator install.
+1: Don&#39;t install Memory Allocator. (Default)
+2: Install Jemalloc
+3: Install TCMalloc
+Enter your choice (1, 2 or 3): 1
+You will install not install Memory Allocator.
+Press any key to install...or Press Ctrl+c to cancel
+</code></pre><h3 id="配置-nginx"><a href="#配置-nginx" class="headerlink" title="配置 nginx"></a><a href="#配置-nginx" title="配置 nginx"></a>配置 nginx</h3><p><code>vi /usr/local/nginx/conf/nginx.conf</code><br>参考如下修改 nginx 的配置</p>
+<pre><code>listen 80 default_server;
+listen [::]:80 default_server;
+root /var/www/laravel/public;
+index index.php index.html index.htm;
+# Make site accessible from http://localhost/
+server_name localhost;
+location / &#123;
+        try_files $uri $uri/ /index.php?$query_string;
+&#125;
+location ~ \.php$ &#123;
+        try_files $uri /index.php =404;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass unix:/var/run/php-fpm.sock;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+&#125;
+</code></pre><h2 id="部署-Laravel"><a href="#部署-Laravel" class="headerlink" title="部署 Laravel"></a><a href="#部署-Laravel" title="部署 Laravel"></a>部署 Laravel</h2><h3 id="安装-composer"><a href="#安装-composer" class="headerlink" title="安装 composer"></a><a href="#安装-composer" title="安装 composer"></a>安装 composer</h3><pre><code>php -r &quot;copy(&#39;https://getcomposer.org/installer&#39;, &#39;composer-setup.php&#39;);&quot;
+php -r &quot;if (hash_file(&#39;SHA384&#39;, &#39;composer-setup.php&#39;) === &#39;e115a8dc7871f15d853148a7fbac7da27d6c0030b848d9b3dc09e2a0388afed865e6a3d6b3c0fad45c48e2b5fc1196ae&#39;) &#123; echo &#39;Installer verified&#39;; &#125; else &#123; echo &#39;Installer corrupt&#39;; unlink(&#39;composer-setup.php&#39;); &#125; echo PHP_EOL;&quot;
+php composer-setup.php
+php -r &quot;unlink(&#39;composer-setup.php&#39;);&quot;
+mv composer.phar /usr/local/bin/composer
+</code></pre><h2 id="配置-Laravel"><a href="#配置-Laravel" class="headerlink" title="配置 Laravel"></a><a href="#配置-Laravel" title="配置 Laravel"></a>配置 Laravel</h2><p>把文件<a href="/images/laravel.zip">larave</a>上传至<code>/home/wwwroot/</code>目录下<br>修改<code>storage</code>文件夹权限<code>chmod -R 775 /home/wwwroot/laravel/storage/</code><br><code>chown www:www -R /home/wwwroot/laravel/</code><br>编辑<code>env</code>将<code>DB_PASSWORD=root</code>中的<code>root</code>改为之前设置的密码<br>之后运行命令<code>mv env .env</code><br>运行<code>composer install</code>，在国内的话，安装时间会比较长</p>
+<h2 id="安装完成"><a href="#安装完成" class="headerlink" title="安装完成"></a><a href="#安装完成" title="安装完成"></a>安装完成</h2><p>现在打开浏览器访问 VPS 的 IP 地址来看看效果吧。<br><img src="/images/laravel.png" srcset="/img/loading.gif" alt="larave"></p>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a><a href="#参考文档" title="参考文档"></a>参考文档</h2><p><a target="_blank" rel="noopener" href="https://webtatic.com/packages/php70/">PHP 7 on CentOS/RHEL 6.8 and 7.2 via Yum</a><br><a target="_blank" rel="noopener" href="http://www.ahlinux.com/centos/23340.html">阿里云CentOS 7.1使用yum安装MySql5.6.24</a><br><a target="_blank" rel="noopener" href="https://laravist.com/discuss/752">从零开始部署 Laravel 项目</a><br><a target="_blank" rel="noopener" href="https://getcomposer.org/download/">Download Composer</a><br><a target="_blank" rel="noopener" href="https://www.slinvent.com/2016/deploy-laravel-on-vps/">从 0 开始在 VPS 上部署 Laravel (Ubuntu 14.04)</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <p>
+                
+                
+                  <span>
+                <i class="iconfont icon-tag"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Laravel/">Laravel</a>
+                    
+                      <a class="hover-with-bg" href="/tags/VPS/">VPS</a>
+                    
+                  </span>
+                
+              </p>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2016/08/hyper-performance-test/">
+                        <i class="fa fa-chevron-left"></i>
+                        <span class="hidden-mobile">Hyper_ 主机性能</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2016/08/lets-encrypt-https/">
+                        <span class="hidden-mobile">用 Let’s Encrypt 使你的网站用上 https</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="fa fa-chevron-right"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+              
+                <!-- Comments -->
+                <div class="comments" id="comments">
+                  
+                  
+  <script defer src="https://utteranc.es/client.js"
+          repo="lwshen/BlogComment"
+          issue-term="title"
+  
+          label="Comment"
+    
+          theme="github-light"
+          crossorigin="anonymous"
+  >
+  </script>
+
+
+                </div>
+              
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc-start"></div>
+<div id="toc">
+  <p class="h5"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    </div>
+    
+  <div>
+    
+      <!-- 不蒜子统计PV -->
+      
+      <span id="busuanzi_container_site_pv" style="display: none">
+      总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    </span>
+    
+    
+      <!-- 不蒜子统计UV -->
+      
+      <span id="busuanzi_container_site_uv" style="display: none">
+      总访客数 <span id="busuanzi_value_site_uv"></span> 人
+    </span>
+    
+  </div>
+
+
+    
+  <!-- 备案信息 -->
+  <div>
+    <a href="http://beian.miit.gov.cn/" target="_blank"
+       rel="nofollow noopener">沪ICP备15006615号</a>
+    
+
+
+    
+    <div>
+      Powered by 
+      <a href="https://webify.cloudbase.net/" target="_blank" rel="nofollow noopener"><b>CloudBase Webify</b></a>
+    </div>
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/popper.js/1.16.1/umd/popper.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js" ></script>
+<script  src="/js/main.js" ></script>
+
+
+  <script  src="/js/lazyload.js" ></script>
+
+
+
+  
+  <script  src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var navHeight = $('#navbar').height();
+      var toc = $('#toc');
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+      var tocLimMax = 2 * boardTop + boardCtn.height();
+
+      $(window).scroll(function () {
+        var tocLimMin = $('#toc-start').offset().top - navHeight;
+        var scroH = document.body.scrollTop + document.documentElement.scrollTop;
+
+        if (tocLimMin <= scroH && scroH <= tocLimMax) {
+          toc.css({
+            'display': 'block',
+            'position': 'fixed',
+            'top': navHeight,
+          });
+        } else if (scroH <= tocLimMin) {
+          toc.css({
+            'position': '',
+            'top': '',
+          });
+        } else if (scroH > tocLimMax) {
+          toc.css('display', 'none');
+        }
+      });
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc > p').css('visibility', 'visible');
+      }
+      var offset = boardCtn.css('margin-right')
+      $('#toc-ctn').css({
+        'right': offset
+      })
+    });
+  </script>
+
+
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://cdn.staticfile.org/smoothscroll/1.4.10/SmoothScroll.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+  
+<script src="/js/custom.js"></script>
+
+
+
+<!-- Plugins -->
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?f149318b2bf2428006445828774d8e97";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-72653245-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/prettify/188.0.0/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  ');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "从 0 开始在 VPS 上部署 Laravel (CentOS 7.2)&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script defer src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+  
+  
+    <script type="text/javascript">
+      //定义获取词语下标
+      var a_idx = 0;
+      jQuery(document).ready(function ($) {
+        //点击body时触发事件
+        $("body").click(function (e) {
+          //需要显示的词语
+          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
+          //设置词语给span标签
+          var $i = $("<span/>").text(a[a_idx]);
+          //下标等于原来下标+1  余 词语总数
+          a_idx = (a_idx + 1) % a.length;
+          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
+          //获取x和y的指针坐标
+          var x = e.pageX, y = e.pageY;
+          //在鼠标的指针的位置给$i定义的span标签添加css样式
+          $i.css({
+            "z-index": 999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": rand_color()
+          });
+          // 随机颜色
+          function rand_color() {
+            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+          }
+          //在body添加这个标签
+          $("body").append($i);
+          //animate() 方法执行 CSS 属性集的自定义动画。
+          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
+          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
+          $i.animate({
+            //将原来的位置向上移动180
+            "top": y - 180,
+            "opacity": 0
+            //1500动画的速度
+          }, 1500, function () {
+            //时间到了自动删除
+            $i.remove();
+          });
+        });
+      })
+      ;
+    </script>
+  
+
+
+
+
+
+
+
+
+</body>
+</html>
